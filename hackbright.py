@@ -123,7 +123,19 @@ def get_student_projects(github):
         """
     db_cursor = db.session.execute(QUERY, {'github': github})
     rows = db_cursor.fetchall()
-    print rows
+    return rows
+
+def get_student_completed_project(title):
+    """ Get a list of completed projects and grade recieved """
+
+    QUERY = """
+        SELECT first_name, last_name, grades.grade FROM students
+        JOIN grades ON (github = student_github)
+        """
+
+    db_cursor = db.session.execute(QUERY, {'title': title})
+    rows = db_cursor.fetchall()
+
     return rows
 
 def handle_input():

@@ -52,9 +52,11 @@ def get_project():
 	""" Display project info """
 	title = request.args.get('title')
 	project = hackbright.get_project_by_title(title)
+	students = hackbright.get_student_completed_project(title)
 
 	return render_template("project_page.html",
-							project=project)
+							project=project,
+							students=students)
 
 if __name__ == "__main__":
     hackbright.connect_to_db(app)
