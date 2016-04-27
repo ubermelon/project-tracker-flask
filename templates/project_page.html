@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block body %}
+
+{% if project %}
+<h1>{{ project[0] }}</h1> <!-- Project Title -->
+
+<ul>
+	<li>Project Title:  {{ project[0] }}</li>
+	<li>Project Description:  {{ project[1] }}</li>
+	<li>Max Grade:  {{ project[2] }}</li>
+</ul>
+{% endif %}
+<p>Students Completing Project</p>
+{% if students %}
+{% for student in students %}
+
+<ul>
+	<li>Student: {{ student[0] }} {{ student[1] }}</li>
+	<li>Grade: {{ student[2] }}</li>
+</ul>
+{% endfor %}
+
+{% endif %}
+
+Return to <a href="/">Homepage</a>
+{% endblock %}

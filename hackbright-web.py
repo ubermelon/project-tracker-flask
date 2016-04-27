@@ -4,6 +4,13 @@ import hackbright
 
 app = Flask(__name__)
 
+@app.route("/")
+def get_homepage():
+	""" Get the homepage """
+	projects = hackbright.get_all_projects()
+	students = hackbright.get_all_students()
+	return render_template("index.html", projects=projects, students=students)
+
 
 @app.route("/student")
 def get_student():

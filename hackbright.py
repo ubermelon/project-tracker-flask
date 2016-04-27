@@ -138,6 +138,28 @@ def get_student_completed_project(title):
 
     return rows
 
+def get_all_projects():
+    """ Gets all projects """
+
+    QUERY = """
+        SELECT title FROM projects
+        """
+    db_cursor = db.session.execute(QUERY)
+    rows = db_cursor.fetchall()
+
+    return rows
+
+def get_all_students():
+    """ Gets all students """
+
+    QUERY = """
+        SELECT * FROM students
+        """
+    db_cursor = db.session.execute(QUERY)
+    rows = db_cursor.fetchall()
+
+    return rows
+
 def handle_input():
     """Main loop.
 
