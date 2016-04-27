@@ -114,6 +114,17 @@ def get_grades_by_title(title):
             row[0], row[1], title)
     return rows
 
+def get_student_projects(github):
+    """ Get list of all project titles & grades for a student. """
+
+    QUERY = """
+        SELECT project_title, grade
+        FROM Grades WHERE student_github = :github
+        """
+    db_cursor = db.session.execute(QUERY, {'github': github})
+    rows = db_cursor.fetchall()
+    print rows
+    return rows
 
 def handle_input():
     """Main loop.
